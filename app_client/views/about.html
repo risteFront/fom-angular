@@ -1,0 +1,58 @@
+<form class="forma" ng-submit="addFormSubmit(x.id,xx.id,form)">
+    <div class="form-group ">
+        <label for="exampleInputEmail1" class="pull-left">Recepie Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" ng-model="form.recName" placeholder="Recepie name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="pull-left">Recepie source</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" ng-model="form.recSource" placeholder="recepie source">
+    </div>
+    <label for="singleSelect"> Please select a ingredient : </label>
+    <div class="alert alert-info" ng-show="user" role="alert">{{msg}} ({{count}})</div>
+    <br>
+    <label for="singleSelect" class="pull-left"> select ingredient : </label>
+    <select ng-model="form.selectedIngredient.stock" class="pull-left" required>
+        <span>
+     <option ng-repeat="x in ingredients" value="{{x.model}}" selected="meat" ng-model="x.model" required>{{x.model}}</option>
+      </span>
+    </select>
+    <select class="pull-left" ng-model="form.selectedIngredient.number">
+    <option ng-repeat="xx in [1,2,3,4,5,6,7]" value="{{xx}}" ng-model="xx" selected="1" required>{{xx}}</option>  
+    </select>
+    <button class="btn btn-primary pull-right" ng-click="stock(form)">add ingredient </button>
+    <br>
+    <hr>
+    <br>
+    <label for="singleSelect"> Preporations time : </label>
+    <br>
+    <label for="singleSelect" class="pull-left">(hours-minutes) : </label>
+    <div>
+        <select ng-model="form.selectedHours" class="pull-left">
+            <option ng-repeat="x2 in hours" value="{{x2.set}}" ng-model="x2.set" selected="02">{{x2.set}}</option>
+        </select>
+        <select ng-model="form.selectedMinutes" class="pull-left">
+            <option ng-repeat="x1 in hours" value="{{x1.min}}" ng-model="x1.min" selected="10">{{x1.min}}</option>
+        </select>
+        <button class="btn btn-primary pull-right" ng-click="time(form)">add Time</button>
+    </div>
+    <br>
+    <hr>
+    <br>
+        <label for="singleSelect" class="pull-left"> preparation instructions </label>
+        <textarea rows="4" cols="50" ng-model="form.place" placeholder="Describe Preporations here..."></textarea>
+
+    <br>
+    <button class="pull-right btn btn-success" type="submit(form)">Finish</button>
+    <hr>
+    <br>
+    <div>
+        <pre>
+        <label class="pull-left">Ingrediants:</label>
+        <small ng-repeat="x in dislpayIng">
+          <small class="pull-left">Name: {{x.ing}} Quantity :{{x.num}}</small>
+          <span ng-show="showTime"> task will be over for {{x.hrs}}{{x.min}}</span>
+        </small>
+         <br> 
+      </pre>
+    </div>
+</form>
